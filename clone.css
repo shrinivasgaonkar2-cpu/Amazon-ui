@@ -254,10 +254,7 @@
   left: 30px;
 }
 
-#box1 img {
-  position: relative;
-  left: 30px;
-}
+
 
 #low {
   text-decoration: none;
@@ -521,6 +518,7 @@ li {
   /* enlarge interactive areas in footer and boxes for tap targets */
   #box1, #box2, #box3, #box4 {
     padding: 14px 8px;
+    font-size: 10px;
   }
 
   /* ensure banner fits small screens */
