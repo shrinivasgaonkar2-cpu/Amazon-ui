@@ -11,19 +11,20 @@
   flex-direction: column;
 }
 
+
 #topNav {
   background-color: black;
   height: 64px;
   display: flex;
-
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
 }
 
 #logo {
   height: 60px;
   /* position: absolute; */
-  left: 8px;
   border: 2px solid black;
   transition-property: border;
 }
@@ -33,11 +34,9 @@
 }
 
 #location {
-  /* position: absolute; */
   height: auto;
+  width: auto;
   /* width: 70px; */
-  top: 3px;
-  left: 120px;
   border: 2px solid black;
   transition-property: border;
 }
@@ -62,27 +61,15 @@
   font-size: 0.85rem;
 }
 
-#id {
-  position: absolute;
-  top: 2px;
-  left: 200px;
-}
-
-#button {
-  background-color: rgb(228, 147, 16);
-  color: rgb(183, 80, 15);
-  height: 45px;
-  width: 45px;
-}
-
 #search {
   display: flex;
-  height: 60%;
+  height: auto;
+  width: 40%;
 }
 
 #space {
   /* position: absolute; */
-  width: 600px;
+  width: 100%;
   border-radius: 4px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -93,7 +80,7 @@
   /* position: absolute; */
   background-color: rgb(226, 137, 12);
   height: auto;
-  width: 42px;
+  width: 8%;
   border-radius: 3px;
   justify-content: center;
   align-items: center;
@@ -103,7 +90,7 @@
 #drop {
   /* position: absolute; */
   height: auto;
-  width: 45px;
+  width: 8%;
   border-radius: 4px;
   background-color: white;
 }
@@ -118,7 +105,6 @@
 
 #signin {
   color: white;
-  /* position: absolute; */
   font-size: 0.85rem;
   border: 2px solid black;
   /* padding: 6px; */
@@ -131,8 +117,6 @@
 
 #cart {
   /* position: absolute; */
-  left: 1200px;
-  top: 13px;
   color: white;
   border: 2px solid black;
   transition-property: border;
@@ -153,14 +137,58 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  font-size: 0.8rem;
-  border: 2px solid black;
-  transition-property: border;
 }
 
-#bottomNav:hover {
-  border: 2px solid white;
+
+/* Desktop layout overrides for top nav children */
+#topNav #logo {
+  height: 48px;
+  border: none;
 }
+
+#topNav #location {
+  height: auto;
+  width: auto;
+  border: none;
+  /* display: flex;
+  align-items: center;
+  gap: 6px; */
+  padding: 4px;
+  color: white;
+}
+
+#topNav #search {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 800px;
+}
+
+#topNav #drop {
+  width: 60px;
+  height: 40px;
+}
+
+#topNav #space {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 40px;
+}
+
+#topNav #searchlogo {
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
+
+#topNav #signin,
+#topNav #cart {
+  border: none;
+  padding: 6px;
+  color: white;
+}
+
 
 /* ================= BANNER ================= */
 
@@ -170,6 +198,8 @@
   width: 100%;
   background-image: url(image1.png);
   background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
 }
 
 /* ================= NOTE ================= */
@@ -323,141 +353,183 @@ li {
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 768px) {
 
-  #navbar {
-    flex-direction: column;
-    height: auto;
-    align-items: flex-start;
-    padding: 10px;
+
+/* Additional responsive refinements */
+/* @media (max-width: 900px) {
+  #topNav {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  #topNav #space {
+    max-width: 400px;
   }
 
   #logo {
-    position: relative;
-    left: 0;
-    margin-bottom: 10px;
-    height: 50px;
+    height: 40px;
   }
+} */
 
-  #location {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: auto;
-    display: flex;
+
+@media (max-width: 600px) {
+  #topNav {
+    /* flex-wrap: wrap; */
     align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
+    height: auto;
+    padding: 8px;
+    gap: 8px;
   }
 
-  #search {
-    position: relative;
-    left: 0;
-    top: 0;
+  /* Logo: smaller and no border */
+  #topNav #logo { 
+    order: 0; 
+    height: 40px;
+    margin-right: 0;
+    border: none;
+    flex-shrink: 0;
+  }
+
+  /* Location: show but smaller */
+  #topNav #location {
+    order: 1;
+    /* display: flex;
+    align-items: center;
+    gap: 4px; */
+    border: none;
+    padding: 0;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Search bar: full width second row */
+  #topNav #search { 
+    order: 2; 
+    width: 100%;
+    height: 10%;
     display: flex;
-    width: 100%;
-    gap: 5px;
-    margin-bottom: 10px;
+    gap: 6px;
+    align-items: center;
   }
 
-  #space {
-    width: 100%;
-    left: 0;
-    height: 35px;
+  #topNav #space {
+    flex: 1;
+    height: 40px;
+    font-size: 0.9rem;
   }
 
-  #searchlogo,
-  #drop {
-    position: relative;
-    left: 0;
-    top: 0;
+  #topNav #drop {
+    width: 50px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  #topNav #searchlogo {
     width: 40px;
-    height: 35px;
+    height: 40px;
+    border-radius: 4px;
+    flex-shrink: 0;
   }
 
-  #signin,
-  #cart {
-    position: relative;
-    left: 0;
-    top: 0;
-    margin-bottom: 10px;
+  /* Sign-in & Cart: third row, compact */
+  #topNav #signin, #topNav #cart { 
+    order: 3;
+    border: none;
+    padding: 4px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
-  #sec {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
+  #bottomNav {
+    padding: 6px 8px;
+    justify-content: flex-start;
+  }
+
+  /* #bottomNav p { display: none; } */
+
+  #note {
+    font-size: 0.5em;
+    width:100%; 
+  }
+}
+
+@media (max-width: 480px) {
+  #topNav {
+    /* flex-wrap: wrap; */
+    align-items: center;
+    padding: 8px;
+    gap: 6px;
     height: auto;
   }
 
+  /* smaller logo */
+  #logo {
+    height: 36px;
+    margin-right: 8px;
+    border: none;
+  }
+
+  /* hide location text to save space */
+  /* #location {
+    display: none;
+  } */
+
+  /* simplify search — full width and larger touch target */
+  #search {
+    order: 2;
+    width: 60%;
+    display: flex;
+    gap: 6px;
+  }
+
+  /* #drop {
+    display: none;
+  } */
+
+  #space {
+    /* height: 1px; */
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  #searchlogo {
+    width: 44px;
+    /* height: 44px; */
+    border-radius: 6px;
+  }
+
+  /* hide text labels on cart/signin, keep icons */
+  #signin {
+    display: none;
+  }
+
+  #cart p {
+    display: none;
+  }
+
+  /* compact bottom nav: keep burger icon, hide text links */
+  #bottomNav {
+    justify-content: space-between;
+    padding: 6px 8px;
+  }
+
+  #bottomNav p {
+    font-size:0.6em;
+  }
+
+  /* enlarge interactive areas in footer and boxes for tap targets */
+  #box1, #box2, #box3, #box4 {
+    padding: 14px 8px;
+  }
+
+  /* ensure banner fits small screens */
   #banner {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+    height: 160px;
+    /* background-position: center; */
   }
 
   #note {
-    width: 90%;
-    left: 5%;
-    top: auto;
-    margin-top: 10px;
-    height: auto;
-    padding: 5px;
-    font-size: 0.75rem;
-  }
-
-  #boxholder {
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 10px;
-  }
-
-  #box1,
-  #box2,
-  #box3,
-  #box4 {
     width: 100%;
-    height: auto;
-    padding: 10px 5px;
-  }
-
-  #box1 img,
-  #box2 img,
-  #box3 img,
-  #box4 img {
-    width: 100%;
-    height: auto;
-    left: 0;
-  }
-
-  #head1,
-  #head2,
-  #head3,
-  #head4 {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  #low {
-    text-align: center;
-    display: block;
-  }
-
-  #get {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  #last,
-  #final {
-    flex-direction: column;
-    height: auto;
-    gap: 5px;
-  }
-
-  #final p {
-    text-align: center;
   }
 }
